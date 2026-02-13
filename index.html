@@ -72,12 +72,26 @@
 <button id="yesBtn" onclick="sayYes()">YES 💖</button>
 <button id="noBtn" onmouseover="moveButton()">NO 😅</button>
 
-<!-- Replace savera.mp3 with your uploaded file name -->
 <audio id="bgMusic" loop>
     <source src="savera.mp3" type="audio/mpeg">
 </audio>
 
 <script>
+let musicStarted = false;
+
+function startExperience() {
+    if (!musicStarted) {
+        let music = document.getElementById("bgMusic");
+        music.volume = 0.7;
+        music.play().catch(() => {});
+        musicStarted = true;
+    }
+}
+
+document.body.addEventListener("click", startExperience);
+document.body.addEventListener("touchstart", startExperience);
+</script>
+
 
     // Play music on first click (browser rule)
     document.body.addEventListener('click', function() {
@@ -119,4 +133,5 @@
 
 </body>
 </html>
+
 
